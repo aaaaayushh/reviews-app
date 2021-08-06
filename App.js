@@ -3,6 +3,7 @@ import Home from "./screens/home";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import Navigator from "./routes/drawer";
+import { StatusBar, View } from "react-native";
 const getFonts = () =>
   Font.loadAsync({
     "nunito-regular": require("./assets/fonts/Nunito-Regular.ttf"),
@@ -14,7 +15,11 @@ const getFonts = () =>
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
   if (fontsLoaded) {
-    return <Navigator />;
+    return (
+      <View style={{ flex: 1, marginTop: StatusBar.currentHeight }}>
+        <Navigator />
+      </View>
+    );
   } else {
     return (
       <AppLoading

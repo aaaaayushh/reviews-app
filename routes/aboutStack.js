@@ -1,11 +1,16 @@
 import { createStackNavigator } from "react-navigation-stack";
 import About from "../screens/about";
-
+import Header from "../shared/header";
+import React from "react";
 const screens = {
   About: {
     screen: About,
-    navigationOptions: {
-      title: "About Gamezone",
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: () => (
+          <Header navigation={navigation} title="About GameZone" />
+        ),
+      };
     },
   },
 };
@@ -17,5 +22,4 @@ const AboutStack = createStackNavigator(screens, {
   },
 });
 
-//appcontainer returns a component that can be rendered with app.js and contains all the info about the navigation stack
 export default AboutStack;

@@ -2,22 +2,23 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 import Home from "../screens/home";
 import Review from "../screens/reviewDetails";
-
+import Header from "../shared/header";
+import React from "react";
 //stackNavigator gives a header, and a back button by default
 //object to pass to createStackNavigator
 const screens = {
   Home: {
     screen: Home,
-    navigationOptions: {
-      title: "GameZone",
-      //   headerStyle: { backgroundColor: "#eee" },
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: () => <Header navigation={navigation} title="GameZone" />,
+      };
     },
   },
   ReviewDetails: {
     screen: Review,
     navigationOptions: {
       title: "Review Details",
-      //   headerStyle: { backgroundColor: "#eee" },
     },
   },
 };
